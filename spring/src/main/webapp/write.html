@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function(){
+		let param = JSON.stringify({
+			id:$("#id").val(),
+			pwd:$("#pwd").val(),
+			name:$("#name").val(),
+			email:$("#email").val()
+		})
+		$("#btn").click(function(){
+			$.ajax({           
+			    url : '/test/api/member/insert2',           // 요청할 서버url
+			    method:'put',
+			    data:param,
+			    contentType:'application/json;charset=utf-8',
+			    success:function(res){
+			    	if(res=="success"){
+			    		alert("가입ㅊㅋ");
+			    	}
+			    }
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<form id="frm">
+		아이디:<input type="text" name="id" id="id"><br>
+		비밀번호:<input type="text" name="pwd" id="pwd"><br>
+		이름:<input type="text" name="name" id="name"><br>
+		이메일:<input type="text" name="email" id="email"><br>
+		<input type="button" value="가입" id="btn">
+	</form>
+</body>
+</html>
